@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { Datails } from './pages/Datails.jsx'
+import { Datails } from './pages/Datails'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
