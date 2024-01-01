@@ -1,8 +1,10 @@
-import './styles.css'
+import { Container } from './styles.js';
 
 export function Datails(){
   
   return(
-    <h1>Hello Word</h1>
+    <Container>
+      <h1>Hello Word</h1>
+    </Container>
   )
 }
