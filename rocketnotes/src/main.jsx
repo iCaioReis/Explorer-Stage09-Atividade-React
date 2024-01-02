@@ -1,9 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { ThemeProvider } from 'styled-components';
+
+import theme from './styles/theme';
+
 import { Datails } from './pages/Datails'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Datails />
+    <ThemeProvider theme= { theme } >
+      <Datails />
+    </ThemeProvider>
   </React.StrictMode>,
 )
