@@ -6,7 +6,9 @@ export function Datails(){
   return(
     <Container>
       <h1>Hello Word</h1>
-      <Button/>
+      <Button title="Entrar" loading/>
+      <Button title="Cadastrar"/>
+      <Button title="Voltar"/>
     </Container>
   )
 }
