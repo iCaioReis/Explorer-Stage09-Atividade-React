@@ -1,13 +1,13 @@
 import { Container } from './styles.js';
+
+import { Header } from '../../components/Header/index.jsx';
 import { Button } from '../../components/Button';
 
 export function Datails(){
   
   return(
     <Container>
-      <h1>Hello Word</h1>
-      <Button title="Entrar" loading/>
-      <Button title="Cadastrar"/>
+      <Header></Header>
       <Button title="Voltar"/>
     </Container>
   )
