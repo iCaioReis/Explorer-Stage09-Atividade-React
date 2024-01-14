@@ -4,6 +4,7 @@ import { Header } from '../../components/Header/index.jsx';
 import { Button } from '../../components/Button';
 import { Section } from '../../components/Section/index.jsx';
 import { ButtonText } from '../../components/ButtonText/index.jsx';
+import { Tag } from '../../components/Tag/index.jsx';
 
 export function Datails(){
   
@@ -21,6 +22,12 @@ export function Datails(){
         </Links>
         
       </Section>
+    <Section title={"Marcadores"}>
+      <Tag title={"Express"}/>
+      <Tag title={"Node"}/>
+
+    </Section>
+
       <Button title="Voltar"/>
     </Container>
   )
