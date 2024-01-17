@@ -7,37 +7,46 @@ import { Section } from '../../components/Section/index.jsx';
 import { ButtonText } from '../../components/ButtonText/index.jsx';
 import { Tag } from '../../components/Tag/index.jsx';
 import { Input } from '../../components/Input/index.jsx';
+import { Note } from '../../components/Note/index.jsx';
 
 export function Home() {
 
   return (
     <Container>
-        <Brand>
-            <h1>RocketNotes</h1>
-        </Brand>
+      <Brand>
+        <h1>RocketNotes</h1>
+      </Brand>
 
-        <Header/>
+      <Header />
 
-        <Menu>
-          <li><ButtonText title={"Todos"} $isactive/></li>
-          <li><ButtonText title={"React"}/></li>
-          <li><ButtonText title={"Node"}/></li>
+      <Menu>
+        <li><ButtonText title={"Todos"} $isactive /></li>
+        <li><ButtonText title={"React"} /></li>
+        <li><ButtonText title={"Node"} /></li>
 
-        </Menu>
+      </Menu>
 
-        <Search>
-          <Input placeholder = "Pesquisar pelo título" icon = {FiSearch} />
+      <Search>
+        <Input placeholder="Pesquisar pelo título" icon={FiSearch} />
+      </Search>
 
-        </Search>
+      <Content>
+        <Section title={"Minhas notas"}>
+          <Note data={{
+            title: 'React', tags: [
+              {id: '1', name: 'React'},
+              {id: '2', name: 'JavaScript'},
+            ]
+          }} />
 
-        <Content>
+        </Section>
 
-        </Content>
+      </Content>
 
-        <NewNote>
-          <FiPlus/>
-          Criar nota
-        </NewNote>
+      <NewNote>
+        <FiPlus />
+        Criar nota
+      </NewNote>
     </Container>
   )
 }
