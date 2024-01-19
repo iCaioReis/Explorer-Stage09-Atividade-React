@@ -7,12 +7,13 @@ import theme from './styles/theme';
 
 import { Datails } from './pages/Datails'
 import { Home } from './pages/Home';
+import { SignIn } from './pages/SingIn';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme= { theme } >
       <GlobalStyles/>
-      <Home />
+      <SignIn />
     </ThemeProvider>
   </React.StrictMode>,
 )
