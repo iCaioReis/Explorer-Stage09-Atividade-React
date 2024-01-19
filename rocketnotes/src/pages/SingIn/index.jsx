@@ -1,4 +1,4 @@
-import { Container, Form } from "./styles";
+import { Container, Form, Background } from "./styles";
 import { FiLogIn, FiMail, FiLock } from "react-icons/fi";
 
 import { Input } from "../../components/Input";
@@ -31,9 +31,9 @@ export function SignIn(){
                     Criar conta
                 </a>
 
-                
-
             </Form>
+
+            <Background></Background>
         </Container>
     );
 }
