@@ -8,12 +8,13 @@ import theme from './styles/theme';
 import { Datails } from './pages/Datails'
 import { Home } from './pages/Home';
 import { SignIn } from './pages/SingIn';
+import { SignUp } from './pages/SingUp';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme= { theme } >
       <GlobalStyles/>
-      <SignIn />
+      <SignUp />
     </ThemeProvider>
   </React.StrictMode>,
 )
