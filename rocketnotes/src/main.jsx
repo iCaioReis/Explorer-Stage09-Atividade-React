@@ -10,12 +10,13 @@ import { Home } from './pages/Home';
 import { SignIn } from './pages/SingIn';
 import { SignUp } from './pages/SingUp';
 import { Profile } from './pages/Profile';
+import { New } from './pages/New'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme= { theme } >
       <GlobalStyles/>
-      <Profile />
+      <New />
     </ThemeProvider>
   </React.StrictMode>,
 )
