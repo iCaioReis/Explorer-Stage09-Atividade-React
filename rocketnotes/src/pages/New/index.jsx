@@ -4,6 +4,7 @@ import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { Section } from '../../components/Section';
 import { Button } from '../../components/Button';
+import { Textarea } from "../../components/Textarea";
 
 export function New() {
     return (
@@ -17,9 +18,8 @@ export function New() {
                         <a href="/">voltar</a>
                     </header>
 
-
-                    <Input placeholder="Titulo" />
-                    <Input placeholder="Observações" />
+                    <Input placeholder="Título"/>
+                    <Textarea placeholder="Observações"/>
 
                     <Section title={"Links úteis"} />
 
