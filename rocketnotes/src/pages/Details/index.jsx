@@ -1,12 +1,12 @@
 import { Container, Links, Content } from './styles.js';
 
-import { Header } from '../../components/Header';
-import { Button } from '../../components/Button';
-import { Section } from '../../components/Section';
-import { ButtonText } from '../../components/ButtonText';
+import { Header } from '../../components/Header/index.jsx';
+import { Button } from '../../components/Button/index.jsx';
+import { Section } from '../../components/Section/index.jsx';
+import { ButtonText } from '../../components/ButtonText/index.jsx';
 import { Tag } from '../../components/Tag/index.jsx';
 
-export function Datails() {
+export function Details() {
 
   return (
     <Container>
