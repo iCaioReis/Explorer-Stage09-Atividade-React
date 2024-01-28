@@ -3,6 +3,7 @@ import { FiLogIn, FiMail, FiLock, FiUser } from "react-icons/fi";
 
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
+import { Link } from "react-router-dom";
 
 export function SingUp(){
     return(
@@ -34,9 +35,9 @@ export function SingUp(){
 
                 <Button title={"Criar"}/>
 
-                <a href="#">
+                <Link to="/">
                     Voltar para o login
-                </a>
+                </Link>
 
             </Form>
         </Container>
