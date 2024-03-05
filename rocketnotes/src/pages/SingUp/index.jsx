@@ -1,11 +1,39 @@
+import { useState } from "react"; //Criar estados para capturar dados digitados
 import { Container, Form, Background } from "./styles";
-import { FiLogIn, FiMail, FiLock, FiUser } from "react-icons/fi";
+import { FiMail, FiLock, FiUser } from "react-icons/fi";
+
+import { api } from "../../services/api";
 
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; //useNavigate para ir para outra rota automaticamente.
 
 export function SingUp(){
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const navigate = useNavigate();
+
+    function handleSingUP (){
+        if(!name || !name || !password){
+            return alert("Preencha todos os campos!");
+        }
+
+        api.post("/users", { name, email, password })
+        .then(() => {
+            alert("Usuário cadastrado com sucesso!");
+            navigate("/");
+        })
+        .catch(error => {
+            if(error.response){
+                alert(error.response.data.message);
+            }else {
+                alert("Não foi possível cadastrar. Tente novamente!")
+            }
+        })
+    }
+
     return(
         <Container>
             <Background></Background>
@@ -19,21 +47,24 @@ export function SingUp(){
                     placeholder="Nome"
                     type="text"
                     icon={FiUser}
+                    onChange={ event => setName(event.target.value)}
                 />
 
                 <Input
                     placeholder="E-mail"
                     type="text"
                     icon={FiMail}
+                    onChange={ event => setEmail(event.target.value)}
                 />
 
                 <Input
                     placeholder="Senha"
                     type="password"
                     icon={FiLock}
+                    onChange={ event => setPassword(event.target.value)}
                 />
 
-                <Button title={"Criar"}/>
+                <Button title={"Criar"} onClick={handleSingUP}/>
 
                 <Link to="/">
                     Voltar para o login
