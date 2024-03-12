@@ -8,14 +8,14 @@ import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { Link, useNavigate } from "react-router-dom"; //useNavigate para ir para outra rota automaticamente.
 
-export function SingUp(){
+export function signUp(){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
 
-    function handleSingUP (){
+    function handlesignUP (){
         if(!name || !name || !password){
             return alert("Preencha todos os campos!");
         }
@@ -64,7 +64,7 @@ export function SingUp(){
                     onChange={ event => setPassword(event.target.value)}
                 />
 
-                <Button title={"Criar"} onClick={handleSingUP}/>
+                <Button title={"Criar"} onClick={handlesignUP}/>
 
                 <Link to="/">
                     Voltar para o login
