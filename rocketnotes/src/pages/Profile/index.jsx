@@ -37,6 +37,7 @@ export function Profile (){
 
     function hadleChangeAvatar(event){
         const file = event.target.files[0]; //Pega somente o primeiro arquivo que o usuário enviar
+
         setAvatarFile(file);
 
         const imagePreview = URL.createObjectURL(file);
