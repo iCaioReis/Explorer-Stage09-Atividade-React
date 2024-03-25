@@ -45,11 +45,14 @@ export function New() {
     }
 
     async function handleNewNote(){
-        if (newTag){
-            return alert("Existe uma Tag não salva. Clique para salvar ou deixe o campo vazio.");
-        };
+        if(!title){
+            return alert("Digite o título da nota.");
+        }
         if (newLink){
             return alert("Existe um link não salvo. Clique para salvar ou deixe o campo vazio.");
+        };
+        if (newTag){
+            return alert("Existe uma Tag não salva. Clique para salvar ou deixe o campo vazio.");
         };
         await api.post("/notes", {
             title,
