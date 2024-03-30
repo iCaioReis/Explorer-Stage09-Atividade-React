@@ -7,6 +7,7 @@ import { Container, Brand, Menu, Search, Content, NewNote } from './styles.js';
 
 import { Header } from '../../components/Header';
 import { Section } from '../../components/Section';
+import { useNavigate } from 'react-router-dom';
 import { ButtonText } from '../../components/ButtonText';
 import { Input } from '../../components/Input';
 import { Note } from '../../components/Note';
@@ -14,26 +15,48 @@ import { Note } from '../../components/Note';
 export function Home() {
   const [tags, setTags] = useState([]);
   const [tagsSelected, setTagsSelected] = useState([]);
+  const [search, setSearch] = useState("");
+  const [notes, setNotes] = useState([]);
 
-  function handleTagSelected(tagName){
+  const navigate = useNavigate();
+
+  function handleTagSelected(tagName) {
+    if(tagName === "all"){
+      return setTagsSelected("");
+    }
+
     const alredySelected = tagsSelected.includes(tagName);
 
-    if(alredySelected){
+    if (alredySelected) {
       const filteredTags = tagsSelected.filter(tag => tag !== tagName);
       setTagsSelected(filteredTags);
-    }else {
+    } else {
       setTagsSelected(prevState => [...prevState, tagName]);
     }
   }
 
+  function handleDetails(id){
+    navigate(`/details/${id}`);
+  }
+
   useEffect(() => {
-    async function fetchTags (){
-      const res =  await api.get("/tags");
+    async function fetchTags() {
+      const res = await api.get("/tags");
       setTags(res.data);
     }
 
     fetchTags();
   }, []);
+
+  useEffect(() => {
+    async function fethNotes() {
+      const res = await api.get(`/notes?title=${search}&tags=${tagsSelected}`);
+      setNotes(res.data);
+    }
+    console.log(notes)
+
+    fethNotes();
+  }, [tagsSelected, search]); //O useEffect é executado cada vez que as variáveis tagsSelected ou search forem modificadas.
 
   return (
     <Container>
@@ -44,13 +67,13 @@ export function Home() {
       <Header />
 
       <Menu>
-        <li><ButtonText 
+        <li><ButtonText
           title={"Todos"}
           $isactive={tagsSelected.length === 0}
           onClick={() => handleTagSelected("all")}
         /></li>
         {
-          tags && tags.map( tag => (
+          tags && tags.map(tag => (
             <li key={String(tag.id)}>
               <ButtonText
                 title={tag.name}
@@ -63,17 +86,24 @@ export function Home() {
       </Menu>
 
       <Search>
-        <Input placeholder="Pesquisar pelo título" icon={FiSearch} />
+        <Input
+          placeholder="Pesquisar pelo título"
+          icon={FiSearch}
+          onChange={e => setSearch(e.target.value)}
+        />
       </Search>
 
       <Content>
         <Section title={"Minhas notas"}>
-          <Note data={{
-            title: 'React', tags: [
-              {id: '1', name: 'React'},
-              {id: '2', name: 'JavaScript'},
-            ]
-          }} />
+          {
+            notes.map(note => (
+              <Note
+                key={String(note.id)}
+                data={note}
+                onClick={() => handleDetails(note.id)}
+              />
+            ))
+          }
 
         </Section>
 
