@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -7,6 +6,7 @@ import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { Section } from '../../components/Section';
 import { Button } from '../../components/Button';
+import { ButtonText } from '../../components/ButtonText';
 import { Textarea } from "../../components/Textarea";
 import { NoteItem } from "../../components/NoteItem";
 
@@ -27,10 +27,15 @@ export function New() {
 
     const navigate = useNavigate();
 
+    function handleBack(){
+        navigate(-1);
+    }
+
     function handleAddLink(){
         setLinks(prevState => [...prevState, newLink]);
         setNewLink("");
     }
+
     function handleRemoveLink(deleted){
         setLinks(prevState => prevState.filter(link => link !== deleted));
     }
@@ -62,7 +67,7 @@ export function New() {
         });
 
         alert("Nota criada com sucesso!")
-        navigate("/");
+        navigate(-1);
     }
 
     return (
@@ -73,7 +78,11 @@ export function New() {
                 <Form>
                     <header>
                         <h1>Criar nota</h1>
-                        <Link to={"/"}>voltar</Link>
+                        
+                        <ButtonText 
+                            title={"Voltar"}
+                            onClick={handleBack}
+                        />
                     </header>
 
                     <Input 
